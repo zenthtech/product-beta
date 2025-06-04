@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "antd": "^5.25.4",
     "daisyui": "^5.0.43",
     "firebase": "^11.8.1",
     "mongoose": "^8.15.1",
