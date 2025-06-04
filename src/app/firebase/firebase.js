@@ -6,6 +6,10 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   GithubAuthProvider,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signOut,
 } from "firebase/auth";
 
 // Firebase config
@@ -24,10 +28,19 @@ const app = initializeApp(firebaseConfig);
 
 // Auth
 const auth = getAuth(app);
+
+// Providers
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 
+// Exported Auth Methods
 export const signInWithGoogle = () => signInWithPopup(auth, googleProvider);
 export const signInWithGitHub = () => signInWithPopup(auth, githubProvider);
+export const loginWithEmail = (email, password) =>
+  signInWithEmailAndPassword(auth, email, password);
+export const registerWithEmail = (email, password) =>
+  createUserWithEmailAndPassword(auth, email, password);
+export const resetPassword = (email) => sendPasswordResetEmail(auth, email);
+export const logout = () => signOut(auth);
 
 export { auth, app };
